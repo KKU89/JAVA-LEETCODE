@@ -1,21 +1,17 @@
 class Solution {
     public int findNumbers(int[] nums) {
-        int count = 0;
+       int evencount=0;
+       for(int i=0;i<nums.length;i++){
+        int digit=0;
+        if(nums[i]==0){return digit=1;}
+        int num=nums[i];
+        while(num>0){
+            num /=10;
+            digit ++;
 
-        for (int i = 0; i < nums.length; i++) {
-            int num = nums[i];
-            int digits = 0;
-
-            while (num > 0) {
-                digits++;
-                num = num / 10;
-            }
-
-            if (digits % 2 == 0) {
-                count++;
-            }
+        }if(digit%2==0){
+            evencount++;
         }
-
-        return count;
+       }return evencount;
     }
 }
