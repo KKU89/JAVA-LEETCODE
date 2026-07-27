@@ -1,28 +1,14 @@
 class Solution {
     public int maxProduct(int[] nums) {
-        
-        int largest = nums[0];
-        int secondLargest = nums[1];
-        
-        if (secondLargest > largest) {
-            int temp = largest;
-            largest = secondLargest;
-            secondLargest = temp;
-        }
-
-        for (int i = 2; i < nums.length; i++) {
-            int current = nums[i];
-
-            if (current > largest) {
-                secondLargest = largest;
-                largest = current;
-            } 
-            else if (current > secondLargest) {
-                secondLargest = current;
+        int max1 = 0, max2 = 0;
+        for (int num : nums) {
+            if (num > max1) {
+                max2 = max1;
+                max1 = num;
+            } else if (num > max2) {
+                max2 = num;
             }
         }
-
-        int result = (largest - 1) * (secondLargest - 1);
-        return result;
+        return (max1 - 1) * (max2 - 1);
     }
 }
