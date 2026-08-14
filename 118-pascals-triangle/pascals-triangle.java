@@ -1,18 +1,24 @@
-class Solution {
-    public List<List<Integer>> generate(int numRows) {
-        List<List<Integer>> result = new ArrayList<>();
-
-        for (int i = 0; i < numRows; i++) {
-            List<Integer> row = new ArrayList<>();
-            for (int j = 0; j <= i; j++) {
-                if (j == 0 || j == i) {
-                    row.add(1);
-                } else {
-                    row.add(result.get(i - 1).get(j - 1) + result.get(i - 1).get(j));
-                }
-            }
-            result.add(row);
+import java.util.*;
+class Solution{
+    public List<List<Integer>> generate(int numRows){
+        List<List<Integer>> kk=new ArrayList<>();
+        if(numRows==0){
+            return kk;
         }
-        return result;
+        for(int i=0;i<numRows;i++){
+            List<Integer> row=new ArrayList<>();
+            if(i==0){
+                row.add(1);
+            }else{
+                List<Integer> prev=kk.get(i-1);
+                row.add(1);
+                for(int j=0;j<prev.size()-1;j++){
+                    row.add(prev.get(j)+prev.get(j+1));
+                }
+                row.add(1);
+            }
+            kk.add(row);
+        }
+        return kk;
     }
 }
